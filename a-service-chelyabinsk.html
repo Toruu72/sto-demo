@@ -18,43 +18,87 @@
 html { scroll-behavior: smooth; }
 body { margin: 0; font-family: Manrope, system-ui, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.5; }
 a { color: inherit; }
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
 .concept { background: #1f2937; color: #e5e7eb; font-size: 13px; text-align: center; padding: 8px 16px; }
-header { position: sticky; top: 0; z-index: 10; background: rgba(18,21,27,.92); backdrop-filter: blur(8px); color: #fff; }
-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
-.brand { display: flex; align-items: center; gap: 10px; }
+header { position: sticky; top: 0; z-index: 30; background: rgba(18,21,27,.95); backdrop-filter: blur(8px); color: #fff; }
+header .wrap { display: flex; align-items: center; height: 64px; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; flex: none; }
 .brand svg { width: 40px; height: 40px; flex: none; }
 .logo { font-weight: 800; font-size: 20px; letter-spacing: -.02em; }
 .logo small { display: block; font-weight: 400; font-size: 12px; color: #9aa3b2; letter-spacing: 0; }
-nav { display: flex; gap: 24px; font-size: 14px; }
-nav a { text-decoration: none; color: #cfd5df; } nav a:hover { color: #fff; }
+nav { display: flex; gap: 2px; font-size: 14px; margin-left: auto; }
+.ni { position: relative; }
+.ni > a { display: block; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #cfd5df; white-space: nowrap; }
+.ni > a:hover { color: #fff; background: rgba(255,255,255,.06); }
+.has-sub > a::after { content: " ▾"; font-size: 11px; opacity: .7; }
+.sub { display: none; position: absolute; top: 100%; left: 0; min-width: 250px; padding: 8px; background: #1b1f27; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,.35); }
+.sub a { display: block; padding: 9px 12px; border-radius: 8px; text-decoration: none; color: #d8dde6; }
+.sub a:hover { background: rgba(255,255,255,.07); color: #fff; }
+.has-sub:hover .sub, .has-sub:focus-within .sub { display: block; }
+.hdr-right { display: flex; align-items: center; gap: 16px; flex: none; margin-left: auto; }
+nav + .hdr-right { margin-left: 8px; }
 .hdr-phone { font-weight: 800; text-decoration: none; white-space: nowrap; }
+.acct { font-size: 13px; color: #9aa3b2; text-decoration: none; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; padding: 6px 10px; white-space: nowrap; }
+.burger { display: none; background: none; border: 0; color: #fff; padding: 8px; cursor: pointer; }
+.burger svg { width: 26px; height: 26px; }
+.mmenu { display: none; }
+.topstrip { background: #fff; border-bottom: 1px solid var(--line); }
+.topstrip .wrap { display: flex; gap: 8px; flex-wrap: wrap; padding: 10px 16px; }
+.tl { font-size: 14px; font-weight: 600; text-decoration: none; padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, #fff); }
+.tl:hover { background: color-mix(in srgb, var(--accent) 28%, #fff); }
 .hero { background: radial-gradient(1200px 500px at 85% 0%, color-mix(in srgb, var(--accent) 35%, transparent), transparent 60%), var(--hero); color: #fff; padding: 72px 0 88px; }
 .hero h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1.05; margin: 0 0 16px; letter-spacing: -.03em; max-width: 760px; }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .hero p { color: #c4cad4; font-size: 18px; max-width: 620px; margin: 0 0 32px; }
 .btns { display: flex; flex-wrap: wrap; gap: 12px; }
-.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border-radius: 12px; font-weight: 800; text-decoration: none; border: 0; font: inherit; font-weight: 800; cursor: pointer; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border-radius: 12px; text-decoration: none; border: 0; font: inherit; font-weight: 800; cursor: pointer; text-align: center; }
 .btn.primary { background: var(--accent); color: var(--accent-ink); }
 .btn.ghost { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.2); }
 .badges { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 48px; color: #c4cad4; font-size: 14px; }
 .badges b { display: block; color: #fff; font-size: 22px; }
 section { padding: 72px 0; }
+section.ls { padding: 0 0 72px; }
 h2 { font-size: clamp(26px, 3.5vw, 38px); letter-spacing: -.02em; margin: 0 0 8px; }
+h3 { margin: 0 0 8px; font-size: 20px; }
 .lead { color: var(--muted); margin: 0 0 32px; max-width: 640px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; padding: 0; margin: 0; list-style: none; }
-.svc { display: flex; align-items: center; gap: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; font-weight: 600; transition: border-color .15s, transform .15s; }
+.svc { display: flex; align-items: center; gap: 14px; height: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; font-weight: 600; text-decoration: none; transition: border-color .15s, transform .15s; }
 .svc:hover { border-color: var(--accent); transform: translateY(-2px); }
 .ic { flex: none; width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 16%, #fff); color: var(--ink); }
 .ic svg { width: 24px; height: 24px; }
+.prices { list-style: none; padding: 0; margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.prices li { display: flex; align-items: baseline; gap: 12px; padding: 16px 20px; border-top: 1px solid var(--line); }
+.prices li:first-child { border-top: 0; }
+.prices i { flex: 1; border-bottom: 1px dotted #c3c8d0; }
+.prices b { white-space: nowrap; }
+.morep { margin: 16px 0 0; }
+.more { font-weight: 800; text-decoration: none; border-bottom: 2px solid var(--accent); }
+.callouts { display: grid; gap: 12px; }
+.callout { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px; border-radius: 18px; background: var(--hero); color: #fff; }
+.callout p { margin: 0; color: #c4cad4; }
+.callout .btn { flex: none; }
 .perks { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; padding: 0; list-style: none; margin: 0; }
 .perks li { display: flex; gap: 16px; }
 .perks p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
-.dark { background: var(--hero); color: #fff; }
+.dark { background: var(--hero); color: #fff; margin-bottom: 72px; }
 .dark .lead { color: #a9b1be; }
-.steps { counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; padding: 0; margin: 0; list-style: none; }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; padding: 0; margin: 0; list-style: none; }
 .steps li { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; padding: 20px; font-weight: 600; }
 .steps span { display: block; color: var(--accent); font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { text-decoration: none; padding: 8px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); font-weight: 600; font-size: 15px; }
+.chip:hover { border-color: var(--accent); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.card { display: flex; flex-direction: column; gap: 6px; padding: 20px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; }
+a.card:hover { border-color: var(--accent); }
+.card span { color: var(--muted); font-size: 14px; }
+.review p { margin: 0 0 6px; color: var(--ink); }
+.more-in { color: var(--muted); font-size: 14px; text-decoration: none; margin-top: auto; }
+.lst { list-style: none; padding: 0; margin: 0; display: grid; gap: 2px; }
+.lst a { display: flex; justify-content: space-between; gap: 12px; padding: 14px 4px; border-bottom: 1px solid var(--line); text-decoration: none; font-weight: 600; }
+.lst a::after { content: "→"; color: var(--muted); }
+.lst a:hover { color: color-mix(in srgb, var(--accent) 70%, #000); }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .book { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
 form { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: grid; gap: 12px; }
 label { font-size: 13px; color: var(--muted); display: grid; gap: 6px; }
@@ -65,15 +109,34 @@ input:focus, select:focus { outline: 2px solid var(--accent); border-color: tran
 .contacts a { display: block; font-weight: 800; font-size: 20px; text-decoration: none; }
 .map { margin-top: 8px; border-radius: 18px; min-height: 180px; display: grid; place-items: center; text-align: center; padding: 24px;
   background: repeating-linear-gradient(45deg, #e9ecf1 0 12px, #eef1f5 12px 24px); color: var(--muted); border: 1px solid var(--line); }
-footer { background: #0c0e12; color: #8b93a1; font-size: 14px; padding: 28px 0 96px; }
+footer { background: #0c0e12; color: #8b93a1; font-size: 14px; padding: 48px 0 96px; }
+.fcols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 32px; }
+.fcols h4 { color: #fff; margin: 0 0 12px; font-size: 15px; }
+.fcols a, .fcols span { display: block; padding: 4px 0; text-decoration: none; color: #a3abb8; }
+.fcols a:hover { color: #fff; }
 .mbar { display: none; }
-.toast { position: fixed; left: 50%; bottom: 90px; transform: translateX(-50%); background: #111; color: #fff; padding: 12px 18px; border-radius: 10px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.toast { position: fixed; left: 50%; bottom: 90px; transform: translateX(-50%); max-width: calc(100% - 32px); background: #111; color: #fff; padding: 12px 18px; border-radius: 10px; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 50; text-align: center; }
 .toast.show { opacity: 1; }
+@media (max-width: 1140px) {
+  nav, .hdr-phone, .acct { display: none; }
+  nav + .hdr-right { margin-left: auto; }
+  .burger { display: block; }
+  .mmenu { position: fixed; inset: 64px 0 0 0; z-index: 25; background: #12151b; overflow-y: auto; padding: 12px 16px 120px; }
+  .menu-open .mmenu { display: block; }
+  .mmenu a { display: block; padding: 14px 4px; color: #fff; text-decoration: none; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .mmenu a.subl { padding-left: 20px; font-weight: 400; color: #b9c0cc; }
+}
 @media (max-width: 820px) {
-  nav, .hdr-phone { display: none; }
   .hero { padding: 48px 0 56px; }
-  .book { grid-template-columns: 1fr; }
+  .book, .cols { grid-template-columns: 1fr; }
+  .fcols { grid-template-columns: 1fr; }
+  .callout { flex-direction: column; align-items: flex-start; }
+  .prices li { flex-wrap: wrap; }
+  .prices i { display: none; }
+  .prices b { white-space: normal; margin-left: auto; text-align: right; }
   section { padding: 48px 0; }
+  section.ls { padding: 0 0 48px; }
+  .dark { margin-bottom: 48px; }
   .mbar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(18,21,27,.96); z-index: 20; }
   .mbar .btn { min-height: 48px; padding: 0 12px; }
 }
@@ -83,11 +146,15 @@ footer { background: #0c0e12; color: #8b93a1; font-size: 14px; padding: 28px 0 9
 <div class="concept">Концепт обновлённого сайта для «А-Сервис». Демонстрационная версия, не официальный сайт компании.</div>
 <header><div class="wrap">
   <div class="brand"><div class="logo">А-Сервис<small>Технический центр · Челябинск</small></div></div>
-  <nav><a href="#services">Услуги</a><a href="#why">Почему мы</a><a href="#book">Запись</a><a href="#contacts">Контакты</a></nav>
-  <a class="hdr-phone" href="tel:+73512185555">+7 (351) 218-55-55</a>
+  <nav><div class="ni"><a href="#top">Главная</a></div><div class="ni"><a href="#" class="dl" data-t="О компании">О компании</a></div><div class="ni has-sub"><a href="#" class="dl" data-t="Услуги">Услуги</a><div class="sub"><a href="#" class="dl" data-t="Постдилерское обслуживание">Постдилерское обслуживание</a><a href="#" class="dl" data-t="Мультибрендовый сервис">Мультибрендовый сервис</a><a href="#" class="dl" data-t="Техосмотр">Техосмотр</a><a href="#" class="dl" data-t="Легковой сервис">Легковой сервис</a><a href="#" class="dl" data-t="Грузовой сервис">Грузовой сервис</a></div></div><div class="ni"><a href="#" class="dl" data-t="Цены">Цены</a></div><div class="ni"><a href="#" class="dl" data-t="Статьи">Статьи</a></div><div class="ni"><a href="#" class="dl" data-t="Вакансии">Вакансии</a></div><div class="ni"><a href="#contacts">Контакты</a></div></nav>
+  <div class="hdr-right"><a href="#" class="dl acct" data-t="Личный кабинет">Личный кабинет</a><a class="hdr-phone" href="tel:+73512185555">+7 (351) 218-55-55</a>
+    <button class="burger" aria-label="Меню" onclick="document.body.classList.toggle('menu-open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
 </div></header>
+<div class="mmenu" onclick="if(event.target.tagName==='A')document.body.classList.remove('menu-open')"><a href="#top">Главная</a><a href="#" class="dl" data-t="О компании">О компании</a><a href="#" class="dl" data-t="Услуги">Услуги</a><a href="#" class="dl subl" data-t="Постдилерское обслуживание">Постдилерское обслуживание</a><a href="#" class="dl subl" data-t="Мультибрендовый сервис">Мультибрендовый сервис</a><a href="#" class="dl subl" data-t="Техосмотр">Техосмотр</a><a href="#" class="dl subl" data-t="Легковой сервис">Легковой сервис</a><a href="#" class="dl subl" data-t="Грузовой сервис">Грузовой сервис</a><a href="#" class="dl" data-t="Цены">Цены</a><a href="#" class="dl" data-t="Статьи">Статьи</a><a href="#" class="dl" data-t="Вакансии">Вакансии</a><a href="#contacts">Контакты</a><a href="#" class="dl acct" data-t="Личный кабинет">Личный кабинет</a></div>
+<div class="topstrip"><div class="wrap"><a href="#" class="dl tl" data-t="Постдилерское обслуживание">Постдилерское обслуживание</a><a href="#" class="dl tl" data-t="Мультибрендовый сервис">Мультибрендовый сервис</a><a href="#" class="dl tl" data-t="Техосмотр">Техосмотр</a></div></div>
 
-<div class="hero"><div class="wrap">
+<div class="hero" id="top"><div class="wrap">
   <h1>Грузовой и легковой <em>техцентр</em> в Челябинске</h1>
   <p>Мультибрендовый сервис и постдилерское обслуживание: от ТО и техосмотра до ремонта двигателя, агрегатов и кузова.</p>
   <div class="btns"><a class="btn primary" href="tel:+73512185555">Позвонить +7 (351) 218-55-55</a><a class="btn ghost" href="#book">Онлайн-запись</a></div>
@@ -97,8 +164,11 @@ footer { background: #0c0e12; color: #8b93a1; font-size: 14px; padding: 28px 0 9
 <section id="services"><div class="wrap">
   <h2>Услуги</h2>
   <p class="lead">Перед ремонтом — тщательная диагностика, чтобы найти настоящую причину поломки.</p>
-  <ul class="grid"><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h12v10H2zM14 10h4l4 4v2h-8"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></span><span>Ремонт грузовых автомобилей</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h3l2-3h5l2 3h3v8h-3l-2 2H9l-2-2H4z"/><path d="M9 13h6"/></svg></span><span>Ремонт двигателя и КПП</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg></span><span>Агрегатный ремонт</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M8 7h8M9 7l-2 4 4 2-4 2 4 2-2 4M12 21h6"/></svg></span><span>Ремонт подвески</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span>Электрооборудование</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span><span>Развал-схождение 3D</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l6-6M14 4l6 6-8 8-6-6z"/><path d="M15 9l-1-1"/></svg></span><span>Малярно-кузовные работы</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><span>Диагностика</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M4 7l16 10M20 7 4 17"/></svg></span><span>Заправка кондиционеров</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span>Техосмотр</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15l2-5c.5-1.3 1.6-2 3-2h8c1.4 0 2.5.7 3 2l2 5v3H3z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span><span>Ремонт и замена стёкол</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L22 14l-8 8-2.3-2.3a4 4 0 0 0-5-5L2 10l8-8z"/></svg></span><span>Заказ запчастей</span></li></ul>
+  <ul class="grid"><li><a href="#" class="dl svc" data-t="Ремонт грузовых автомобилей"><span class=ic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h12v10H2zM14 10h4l4 4v2h-8"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></span><span>Ремонт грузовых автомобилей</span></a></li><li><a href="#" class="dl svc" data-t="Ремонт двигателя и КПП"><span class=ic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h3l2-3h5l2 3h3v8h-3l-2 2H9l-2-2H4z"/><path d="M9 13h6"/></svg></span><span>Ремонт двигателя и КПП</span></a></li><li><a href="#" class="dl svc" data-t="Агрегатный ремонт"><span class=ic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg></span><span>Агрегатный ремонт</span></a></li><li><a href="#" class="dl svc" data-t="Ремонт подвески"><span class=ic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M8 7h8M9 7l-2 4 4 2-4 2 4 2-2 4M12 21h6"/></svg></span><span>Ремонт подвески</span></a></li><li><a href="#" class="dl svc" data-t="Электрооборудование"><span class=ic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span>Электрооборудование</span></a></li><li><a href="#" class="dl svc" data-t="Развал-схождение 3D"><span class=ic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span><span>Развал-схождение 3D</span></a></li><li><a href="#" class="dl svc" data-t="Малярно-кузовные работы"><span class=ic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l6-6M14 4l6 6-8 8-6-6z"/><path d="M15 9l-1-1"/></svg></span><span>Малярно-кузовные работы</span></a></li><li><a href="#" class="dl svc" data-t="Диагностика"><span class=ic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><span>Диагностика</span></a></li><li><a href="#" class="dl svc" data-t="Заправка кондиционеров"><span class=ic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M4 7l16 10M20 7 4 17"/></svg></span><span>Заправка кондиционеров</span></a></li><li><a href="#" class="dl svc" data-t="Техосмотр"><span class=ic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span>Техосмотр</span></a></li><li><a href="#" class="dl svc" data-t="Ремонт и замена стёкол"><span class=ic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15l2-5c.5-1.3 1.6-2 3-2h8c1.4 0 2.5.7 3 2l2 5v3H3z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span><span>Ремонт и замена стёкол</span></a></li><li><a href="#" class="dl svc" data-t="Заказ запчастей"><span class=ic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L22 14l-8 8-2.3-2.3a4 4 0 0 0-5-5L2 10l8-8z"/></svg></span><span>Заказ запчастей</span></a></li></ul>
 </div></section>
+
+
+<section style="padding-top:0"><div class="wrap callouts"><div class="callout"><div><h3>Честный расчёт стоимости</h3><p>Стоимость работ считаем по нормам времени, рекомендованным заводом-изготовителем автомобиля.</p></div><a href="#" class="dl btn primary" data-t="Узнать цены">Узнать цены</a></div><div class="callout"><div><h3>Записаться на техосмотр</h3><p>Пройдите техосмотр легкового или грузового автомобиля на месте, в нашем техцентре.</p></div><a href="#" class="dl btn primary" data-t="Записаться на техосмотр">Записаться на техосмотр</a></div></div></section>
 
 <section id="why" style="padding-top:0"><div class="wrap">
   <h2>Почему выбирают нас</h2>
@@ -108,7 +178,9 @@ footer { background: #0c0e12; color: #8b93a1; font-size: 14px; padding: 28px 0 9
 
 
 
-<section id="book"><div class="wrap book">
+<section class="ls"><div class="wrap"><h2>Услуги по направлениям</h2><p class="lead">Отдельный перечень работ для легковых и грузовых автомобилей.</p><div class="cols"><div><h3>Легковые автомобили</h3><ul class="lst"><li><a href="#" class="dl" data-t="Ремонт ДВС и КПП">Ремонт ДВС и КПП</a></li><li><a href="#" class="dl" data-t="Техобслуживание автомобиля">Техобслуживание автомобиля</a></li><li><a href="#" class="dl" data-t="Электрооборудование">Электрооборудование</a></li><li><a href="#" class="dl" data-t="Развал-схождение 3D">Развал-схождение 3D</a></li><li><a href="#" class="dl" data-t="Малярно-кузовные работы">Малярно-кузовные работы</a></li><li><a href="#" class="dl" data-t="Диагностика">Диагностика</a></li><li><a href="#" class="dl" data-t="Шиномонтаж">Шиномонтаж</a></li><li><a href="#" class="dl" data-t="Заправка кондиционеров">Заправка кондиционеров</a></li><li><a href="#" class="dl" data-t="Ремонт подвески">Ремонт подвески</a></li><li><a href="#" class="dl" data-t="Заказ запчастей">Заказ запчастей</a></li><li><a href="#" class="dl" data-t="Комплексная мойка">Комплексная мойка</a></li><li><a href="#" class="dl" data-t="Страхование">Страхование</a></li></ul></div><div><h3>Грузовые автомобили</h3><ul class="lst"><li><a href="#" class="dl" data-t="Ремонт ДВС">Ремонт ДВС</a></li><li><a href="#" class="dl" data-t="Агрегатный ремонт">Агрегатный ремонт</a></li><li><a href="#" class="dl" data-t="Ремонт подвески">Ремонт подвески</a></li><li><a href="#" class="dl" data-t="Электрооборудование">Электрооборудование</a></li><li><a href="#" class="dl" data-t="Развал-схождение 3D">Развал-схождение 3D</a></li><li><a href="#" class="dl" data-t="Малярно-кузовные работы">Малярно-кузовные работы</a></li><li><a href="#" class="dl" data-t="Диагностика">Диагностика</a></li><li><a href="#" class="dl" data-t="Шиномонтаж">Шиномонтаж</a></li><li><a href="#" class="dl" data-t="Заправка кондиционеров">Заправка кондиционеров</a></li><li><a href="#" class="dl" data-t="Ремонт и замена стёкол">Ремонт и замена стёкол</a></li><li><a href="#" class="dl" data-t="Заказ запчастей">Заказ запчастей</a></li><li><a href="#" class="dl" data-t="Комплексная мойка">Комплексная мойка</a></li></ul></div></div></div></section><section class="ls"><div class="wrap"><h2>Новости и акции</h2><ul class="lst"><li><a href="#" class="dl" data-t="Техосмотр в подарок при прохождении ТО">Техосмотр в подарок при прохождении ТО</a></li><li><a href="#" class="dl" data-t="Скидка 30% на техобслуживание авто">Скидка 30% на техобслуживание авто</a></li><li><a href="#" class="dl" data-t="Замена масла бесплатно при покупке масла">Замена масла бесплатно при покупке масла</a></li><li><a href="#" class="dl" data-t="Запишитесь online и получите скидку">Запишитесь online и получите скидку</a></li></ul><p class="morep"><a href="#" class="dl more" data-t="Все новости">Все новости</a></p></div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap book">
   <div>
     <h2>Запишитесь онлайн</h2>
     <p class="lead">Оставьте номер, и мастер перезвонит, уточнит неисправность и подберёт удобное время.</p>
@@ -126,14 +198,17 @@ footer { background: #0c0e12; color: #8b93a1; font-size: 14px; padding: 28px 0 9
     <label>Марка и модель<input placeholder="Например, Kia Rio 2017" autocomplete="off"></label>
     <label>Что случилось<select><option>Ремонт грузовых автомобилей</option><option>Ремонт двигателя и КПП</option><option>Агрегатный ремонт</option><option>Ремонт подвески</option><option>Электрооборудование</option><option>Развал-схождение 3D</option><option>Малярно-кузовные работы</option><option>Диагностика</option><option>Заправка кондиционеров</option><option>Техосмотр</option><option>Ремонт и замена стёкол</option><option>Заказ запчастей</option><option>Другое</option></select></label>
     <button class="btn primary" type="submit">Записаться</button>
-    <small style="color:var(--muted)">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</small>
+    <small style="color:var(--muted)">Нажимая кнопку, вы соглашаетесь с <a href="#" class="dl" data-t="политикой обработки персональных данных">политикой обработки персональных данных</a>.</small>
   </form>
 </div></section>
 
-<footer><div class="wrap">© А-Сервис. Концепт редизайна, тексты взяты с действующего сайта компании.</div></footer>
+<footer><div class="wrap"><div class="fcols"><div><h4>Разделы</h4><a href="#" class="dl" data-t="Главная">Главная</a><a href="#" class="dl" data-t="О компании">О компании</a><a href="#" class="dl" data-t="Услуги">Услуги</a><a href="#" class="dl" data-t="Цены">Цены</a><a href="#" class="dl" data-t="Статьи">Статьи</a><a href="#" class="dl" data-t="Вакансии">Вакансии</a><a href="#" class="dl" data-t="Контакты">Контакты</a><a href="#" class="dl" data-t="Постдилерское обслуживание">Постдилерское обслуживание</a><a href="#" class="dl" data-t="Мультибрендовый сервис">Мультибрендовый сервис</a><a href="#" class="dl" data-t="Техосмотр">Техосмотр</a><a href="#" class="dl" data-t="Легковой сервис">Легковой сервис</a><a href="#" class="dl" data-t="Грузовой сервис">Грузовой сервис</a></div><div><h4>Услуги</h4><a href="#" class="dl" data-t="Ремонт грузовых автомобилей">Ремонт грузовых автомобилей</a><a href="#" class="dl" data-t="Ремонт двигателя и КПП">Ремонт двигателя и КПП</a><a href="#" class="dl" data-t="Агрегатный ремонт">Агрегатный ремонт</a><a href="#" class="dl" data-t="Ремонт подвески">Ремонт подвески</a><a href="#" class="dl" data-t="Электрооборудование">Электрооборудование</a><a href="#" class="dl" data-t="Развал-схождение 3D">Развал-схождение 3D</a><a href="#" class="dl" data-t="Малярно-кузовные работы">Малярно-кузовные работы</a><a href="#" class="dl" data-t="Диагностика">Диагностика</a><a href="#" class="dl" data-t="Заправка кондиционеров">Заправка кондиционеров</a><a href="#" class="dl" data-t="Техосмотр">Техосмотр</a><a href="#" class="dl" data-t="Ремонт и замена стёкол">Ремонт и замена стёкол</a><a href="#" class="dl" data-t="Заказ запчастей">Заказ запчастей</a></div><div><h4>Связаться</h4><a href="tel:+73512185555">+7 (351) 218-55-55</a><a href="tel:+79511122645">8 (951) 112-26-45</a><span>Челябинск, ул. Дачная, 39</span></div></div>© А-Сервис. Концепт редизайна, тексты взяты с действующего сайта компании.</div></footer>
 
 <div class="mbar"><a class="btn primary" href="tel:+73512185555">Позвонить</a><a class="btn ghost" href="#book">Записаться</a></div>
-<div class="toast" id="t">Демо-версия: в рабочем сайте заявка уйдёт в Telegram мастеру</div>
-<script>function toast(){var t=document.getElementById('t');t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2600)}</script>
+<div class="toast" id="t"></div>
+<script>
+function toast(msg){var t=document.getElementById('t');t.textContent=msg||'Демо-версия: в рабочем сайте заявка уйдёт в Telegram мастеру';t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show')},2800)}
+document.addEventListener('click',function(ev){var a=ev.target.closest('a.dl');if(!a)return;ev.preventDefault();document.body.classList.remove('menu-open');toast('«'+a.dataset.t+'» — страница будет перенесена с текущего сайта в новом дизайне')});
+</script>
 </body>
 </html>
