@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ТранзитСервис — концепт сайта</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #f5c400;
+  --accent-ink: #111;
+  --bg: #f5f6f8; --card: #fff; --ink: #14171c; --muted: #5d6573; --line: #e3e6eb;
+  --hero: #12151b;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: Manrope, system-ui, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.5; }
+a { color: inherit; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.concept { background: #1f2937; color: #e5e7eb; font-size: 13px; text-align: center; padding: 8px 16px; }
+header { position: sticky; top: 0; z-index: 10; background: rgba(18,21,27,.92); backdrop-filter: blur(8px); color: #fff; }
+header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand svg { width: 40px; height: 40px; flex: none; }
+.logo { font-weight: 800; font-size: 20px; letter-spacing: -.02em; }
+.logo small { display: block; font-weight: 400; font-size: 12px; color: #9aa3b2; letter-spacing: 0; }
+nav { display: flex; gap: 24px; font-size: 14px; }
+nav a { text-decoration: none; color: #cfd5df; } nav a:hover { color: #fff; }
+.hdr-phone { font-weight: 800; text-decoration: none; white-space: nowrap; }
+.hero { background: radial-gradient(1200px 500px at 85% 0%, color-mix(in srgb, var(--accent) 35%, transparent), transparent 60%), var(--hero); color: #fff; padding: 72px 0 88px; }
+.hero h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1.05; margin: 0 0 16px; letter-spacing: -.03em; max-width: 760px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p { color: #c4cad4; font-size: 18px; max-width: 620px; margin: 0 0 32px; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border-radius: 12px; font-weight: 800; text-decoration: none; border: 0; font: inherit; font-weight: 800; cursor: pointer; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.2); }
+.badges { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 48px; color: #c4cad4; font-size: 14px; }
+.badges b { display: block; color: #fff; font-size: 22px; }
+section { padding: 72px 0; }
+h2 { font-size: clamp(26px, 3.5vw, 38px); letter-spacing: -.02em; margin: 0 0 8px; }
+.lead { color: var(--muted); margin: 0 0 32px; max-width: 640px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; padding: 0; margin: 0; list-style: none; }
+.svc { display: flex; align-items: center; gap: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; font-weight: 600; transition: border-color .15s, transform .15s; }
+.svc:hover { border-color: var(--accent); transform: translateY(-2px); }
+.ic { flex: none; width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 16%, #fff); color: var(--ink); }
+.ic svg { width: 24px; height: 24px; }
+.perks { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; padding: 0; list-style: none; margin: 0; }
+.perks li { display: flex; gap: 16px; }
+.perks p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+.dark { background: var(--hero); color: #fff; }
+.dark .lead { color: #a9b1be; }
+.steps { counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; padding: 0; margin: 0; list-style: none; }
+.steps li { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; padding: 20px; font-weight: 600; }
+.steps span { display: block; color: var(--accent); font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+.book { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+form { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: grid; gap: 12px; }
+label { font-size: 13px; color: var(--muted); display: grid; gap: 6px; }
+input, select { font: inherit; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
+input:focus, select:focus { outline: 2px solid var(--accent); border-color: transparent; }
+.contacts { display: grid; gap: 16px; }
+.contacts .row { display: flex; gap: 14px; align-items: flex-start; }
+.contacts a { display: block; font-weight: 800; font-size: 20px; text-decoration: none; }
+.map { margin-top: 8px; border-radius: 18px; min-height: 180px; display: grid; place-items: center; text-align: center; padding: 24px;
+  background: repeating-linear-gradient(45deg, #e9ecf1 0 12px, #eef1f5 12px 24px); color: var(--muted); border: 1px solid var(--line); }
+footer { background: #0c0e12; color: #8b93a1; font-size: 14px; padding: 28px 0 96px; }
+.mbar { display: none; }
+.toast { position: fixed; left: 50%; bottom: 90px; transform: translateX(-50%); background: #111; color: #fff; padding: 12px 18px; border-radius: 10px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.toast.show { opacity: 1; }
+@media (max-width: 820px) {
+  nav, .hdr-phone { display: none; }
+  .hero { padding: 48px 0 56px; }
+  .book { grid-template-columns: 1fr; }
+  section { padding: 48px 0; }
+  .mbar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(18,21,27,.96); z-index: 20; }
+  .mbar .btn { min-height: 48px; padding: 0 12px; }
+}
+</style>
+</head>
+<body>
+<div class="concept">Концепт обновлённого сайта для «ТранзитСервис». Демонстрационная версия, не официальный сайт компании.</div>
+<header><div class="wrap">
+  <div class="brand"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="22" cy="11" rx="6" ry="10.5" fill="#1565c0" transform="rotate(8 22 11)"/><ellipse cx="10" cy="25" rx="10" ry="6" fill="#43a047" transform="rotate(-35 10 25)"/><ellipse cx="29" cy="29" rx="10" ry="6" fill="#fbc02d" transform="rotate(30 29 29)"/></svg><div class="logo">ТранзитСервис<small>г. Тюмень</small></div></div>
+  <nav><a href="#services">Услуги</a><a href="#why">Почему мы</a><a href="#book">Запись</a><a href="#contacts">Контакты</a></nav>
+  <a class="hdr-phone" href="tel:+79129227875">+7 (912) 922-78-75</a>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <h1>Ремонт легковых автомобилей <em>всех марок</em> в центре Тюмени</h1>
+  <p>Диагностика, ремонт двигателя и КПП, ходовая, кузов и покраска. Низкие цены и почти без очередей — машину берём в работу сразу.</p>
+  <div class="btns"><a class="btn primary" href="tel:+79129227875">Позвонить +7 (912) 922-78-75</a><a class="btn ghost" href="#book">Онлайн-запись</a></div>
+  <div class="badges"><div><b>Все марки</b>легковых автомобилей</div><div><b>Центр города</b>у моста «Стрела»</div><div><b>Без очередей</b>обычно сразу в работу</div></div>
+</div></div>
+
+<section id="services"><div class="wrap">
+  <h2>Услуги</h2>
+  <p class="lead">Опытные автослесари, мотористы и автоэлектрики найдут и исправят любую поломку.</p>
+  <ul class="grid"><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><span>Компьютерная диагностика</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L22 14l-8 8-2.3-2.3a4 4 0 0 0-5-5L2 10l8-8z"/></svg></span><span>Техническое обслуживание</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg></span><span>Ремонт КПП</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h3l2-3h5l2 3h3v8h-3l-2 2H9l-2-2H4z"/><path d="M9 13h6"/></svg></span><span>Ремонт и капремонт двигателя</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M8 7h8M9 7l-2 4 4 2-4 2 4 2-2 4M12 21h6"/></svg></span><span>Ремонт ходовой</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l6-6M14 4l6 6-8 8-6-6z"/><path d="M15 9l-1-1"/></svg></span><span>Жестяные и покрасочные работы</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15l2-5c.5-1.3 1.6-2 3-2h8c1.4 0 2.5.7 3 2l2 5v3H3z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span><span>Рихтовка любой сложности</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span>Автоэлектрика</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span><span>Шиномонтаж</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="2"/><circle cx="12" cy="13" r="3"/><path d="M8 7l2-3h4l2 3"/></svg></span><span>Диагностика видеокамерой</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 14 10M14 10l3-3 3 3-3 3zM5 9l2 2M9 5l2 2"/></svg></span><span>Сварочные работы</span></li><li class="svc"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h3l2-3h5l2 3h3v8h-3l-2 2H9l-2-2H4z"/><path d="M9 13h6"/></svg></span><span>Промывка инжектора</span></li></ul>
+</div></section>
+
+<section id="why" style="padding-top:0"><div class="wrap">
+  <h2>Почему выбирают нас</h2>
+  <p class="lead">&nbsp;</p>
+  <ul class="perks"><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21V3h6a4 4 0 0 1 0 8H6M6 15h8"/></svg></span><div><b>Одни из самых низких цен в Тюмени</b><p>При этом без компромиссов в качестве и с нормальным оборудованием.</p></div></li><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Почти без ожидания</b><p>Очереди у нас бывают редко — отремонтированную машину вы получаете быстро.</p></div></li><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><div><b>Удобно доехать</b><p>Развязка Мориса Тореза и Трактовой, рядом с мостом «Стрела».</p></div></li><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span><div><b>Всё в одном месте</b><p>Ремонт, кузов, электрика и шиномонтаж — не нужно ездить по разным сервисам.</p></div></li></ul>
+</div></section>
+
+
+
+<section id="book"><div class="wrap book">
+  <div>
+    <h2>Запишитесь онлайн</h2>
+    <p class="lead">Оставьте номер, и мастер перезвонит, уточнит неисправность и подберёт удобное время.</p>
+    <div class="contacts" id="contacts">
+      <div class="row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><div><a href="tel:+79129227875">+7 (912) 922-78-75</a><a href="tel:+73452713099">8 (3452) 71-30-99</a></div></div>
+      <div class="row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><div><b>Тюмень, ул. Конституции, 32</b><br><span style="color:var(--muted)">Район моста «Стрела»</span></div></div>
+      
+      
+      <div class="map">Здесь будет интерактивная карта<br><a style="font-size:15px;margin-top:8px" href="https://yandex.ru/maps/?text=%D0%A2%D1%8E%D0%BC%D0%B5%D0%BD%D1%8C%2C%20%D1%83%D0%BB.%20%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B8%D1%82%D1%83%D1%86%D0%B8%D0%B8%2C%2032" target="_blank" rel="noopener">Построить маршрут в Яндекс Картах →</a></div>
+    </div>
+  </div>
+  <form onsubmit="event.preventDefault();toast()">
+    <label>Ваше имя<input placeholder="Иван" autocomplete="off"></label>
+    <label>Телефон<input type="tel" placeholder="+7 (___) ___-__-__" autocomplete="off"></label>
+    <label>Марка и модель<input placeholder="Например, Kia Rio 2017" autocomplete="off"></label>
+    <label>Что случилось<select><option>Компьютерная диагностика</option><option>Техническое обслуживание</option><option>Ремонт КПП</option><option>Ремонт и капремонт двигателя</option><option>Ремонт ходовой</option><option>Жестяные и покрасочные работы</option><option>Рихтовка любой сложности</option><option>Автоэлектрика</option><option>Шиномонтаж</option><option>Диагностика видеокамерой</option><option>Сварочные работы</option><option>Промывка инжектора</option><option>Другое</option></select></label>
+    <button class="btn primary" type="submit">Записаться</button>
+    <small style="color:var(--muted)">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</small>
+  </form>
+</div></section>
+
+<footer><div class="wrap">© ТранзитСервис. Концепт редизайна, тексты взяты с действующего сайта компании.</div></footer>
+
+<div class="mbar"><a class="btn primary" href="tel:+79129227875">Позвонить</a><a class="btn ghost" href="#book">Записаться</a></div>
+<div class="toast" id="t">Демо-версия: в рабочем сайте заявка уйдёт в Telegram мастеру</div>
+<script>function toast(){var t=document.getElementById('t');t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2600)}</script>
+</body>
+</html>
