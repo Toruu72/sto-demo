@@ -13,6 +13,7 @@
   --accent-ink: #111;
   --bg: #f5f6f8; --card: #fff; --ink: #14171c; --muted: #5d6573; --line: #e3e6eb;
   --hero: #12151b;
+  --hh: 64px;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -21,9 +22,12 @@ a { color: inherit; }
 .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
 .concept { background: #1f2937; color: #e5e7eb; font-size: 13px; text-align: center; padding: 8px 16px; }
 header { position: sticky; top: 0; z-index: 30; background: rgba(18,21,27,.95); backdrop-filter: blur(8px); color: #fff; }
-header .wrap { display: flex; align-items: center; height: 64px; gap: 16px; }
+header .wrap { display: flex; align-items: center; height: var(--hh); gap: 16px; }
 .brand { display: flex; align-items: center; gap: 10px; flex: none; }
 .brand svg { width: 40px; height: 40px; flex: none; }
+.logo-plate { display: flex; align-items: center; background: #fff; border-radius: 12px; padding: 6px 16px; text-decoration: none; }
+.logo-plate img { display: block; height: calc(var(--hh) - 26px); width: auto; }
+@media (max-width: 480px) { .logo-plate img { height: calc(var(--hh) - 40px); } }
 .logo { font-weight: 800; font-size: 20px; letter-spacing: -.02em; }
 .logo small { display: block; font-weight: 400; font-size: 12px; color: #9aa3b2; letter-spacing: 0; }
 nav { display: flex; gap: 2px; font-size: 14px; margin-left: auto; }
@@ -121,7 +125,7 @@ footer { background: #0c0e12; color: #8b93a1; font-size: 14px; padding: 48px 0 9
   nav, .hdr-phone, .acct { display: none; }
   nav + .hdr-right { margin-left: auto; }
   .burger { display: block; }
-  .mmenu { position: fixed; inset: 64px 0 0 0; z-index: 25; background: #12151b; overflow-y: auto; padding: 12px 16px 120px; }
+  .mmenu { position: fixed; inset: var(--hh) 0 0 0; z-index: 25; background: #12151b; overflow-y: auto; padding: 12px 16px 120px; }
   .menu-open .mmenu { display: block; }
   .mmenu a { display: block; padding: 14px 4px; color: #fff; text-decoration: none; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,.08); }
   .mmenu a.subl { padding-left: 20px; font-weight: 400; color: #b9c0cc; }
@@ -148,7 +152,7 @@ footer { background: #0c0e12; color: #8b93a1; font-size: 14px; padding: 48px 0 9
   <div class="brand"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="22" cy="11" rx="6" ry="10.5" fill="#1565c0" transform="rotate(8 22 11)"/><ellipse cx="10" cy="25" rx="10" ry="6" fill="#43a047" transform="rotate(-35 10 25)"/><ellipse cx="29" cy="29" rx="10" ry="6" fill="#fbc02d" transform="rotate(30 29 29)"/></svg><div class="logo">ТранзитСервис<small>г. Тюмень</small></div></div>
   <nav><div class="ni"><a href="#top">Главная</a></div><div class="ni has-sub"><a href="#" class="dl" data-t="Услуги">Услуги</a><div class="sub"><a href="#" class="dl" data-t="Автослесари">Автослесари</a><a href="#" class="dl" data-t="Мотористы">Мотористы</a><a href="#" class="dl" data-t="Автоэлектрики">Автоэлектрики</a><a href="#" class="dl" data-t="Шиномонтаж">Шиномонтаж</a><a href="#" class="dl" data-t="Кузовной ремонт">Кузовной ремонт</a></div></div><div class="ni has-sub"><a href="#" class="dl" data-t="Цены">Цены</a><div class="sub"><a href="#" class="dl" data-t="ТО и общеремонтные работы">ТО и общеремонтные работы</a><a href="#" class="dl" data-t="Ремонт КПП">Ремонт КПП</a><a href="#" class="dl" data-t="Капитальный ремонт двигателя">Капитальный ремонт двигателя</a></div></div><div class="ni has-sub"><a href="#" class="dl" data-t="Фото">Фото</a><div class="sub"><a href="#" class="dl" data-t="Фото Жестянка. Молярка">Фото Жестянка. Молярка</a><a href="#" class="dl" data-t="Фото Мотор. Ходовая">Фото Мотор. Ходовая</a></div></div><div class="ni"><a href="#" class="dl" data-t="Акции">Акции</a></div><div class="ni"><a href="#" class="dl" data-t="Новости">Новости</a></div><div class="ni"><a href="#" class="dl" data-t="Статьи">Статьи</a></div><div class="ni"><a href="#" class="dl" data-t="Отзывы">Отзывы</a></div><div class="ni"><a href="#contacts">Контакты</a></div></nav>
   <div class="hdr-right"><a class="hdr-phone" href="tel:+79129227875">+7 (912) 922-78-75</a>
-    <button class="burger" aria-label="Меню" onclick="document.body.classList.toggle('menu-open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <button class="burger" aria-label="Меню" onclick="document.querySelector('.mmenu').style.top=document.querySelector('header').getBoundingClientRect().bottom+'px';document.body.classList.toggle('menu-open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
 </div></header>
 <div class="mmenu" onclick="if(event.target.tagName==='A')document.body.classList.remove('menu-open')"><a href="#top">Главная</a><a href="#" class="dl" data-t="Услуги">Услуги</a><a href="#" class="dl subl" data-t="Автослесари">Автослесари</a><a href="#" class="dl subl" data-t="Мотористы">Мотористы</a><a href="#" class="dl subl" data-t="Автоэлектрики">Автоэлектрики</a><a href="#" class="dl subl" data-t="Шиномонтаж">Шиномонтаж</a><a href="#" class="dl subl" data-t="Кузовной ремонт">Кузовной ремонт</a><a href="#" class="dl" data-t="Цены">Цены</a><a href="#" class="dl subl" data-t="ТО и общеремонтные работы">ТО и общеремонтные работы</a><a href="#" class="dl subl" data-t="Ремонт КПП">Ремонт КПП</a><a href="#" class="dl subl" data-t="Капитальный ремонт двигателя">Капитальный ремонт двигателя</a><a href="#" class="dl" data-t="Фото">Фото</a><a href="#" class="dl subl" data-t="Фото Жестянка. Молярка">Фото Жестянка. Молярка</a><a href="#" class="dl subl" data-t="Фото Мотор. Ходовая">Фото Мотор. Ходовая</a><a href="#" class="dl" data-t="Акции">Акции</a><a href="#" class="dl" data-t="Новости">Новости</a><a href="#" class="dl" data-t="Статьи">Статьи</a><a href="#" class="dl" data-t="Отзывы">Отзывы</a><a href="#contacts">Контакты</a></div>
